@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Gallery</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .panels {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgb(29, 26, 26);
+      height: 100vh;
+    }
+
+    .panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      flex-grow: 1;
+      height: 100vh;
+      overflow: hidden;
+      font-size: 30px;
+      transition: .5s;
+    }
+
+    .panel1 {
+      background-image: url(https://cdn.pixabay.com/photo/2017/02/19/14/30/water-2079907_640.jpg);
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .panel2 {
+      background-image: url(https://cdn.pixabay.com/photo/2018/04/21/14/40/girl-3338616_960_720.jpg);
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .panel3 {
+      background-image: url(https://cdn.pixabay.com/photo/2017/02/19/16/01/mountaineer-2080138_960_720.jpg);
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .panel4 {
+      background-image: url(https://cdn.pixabay.com/photo/2018/08/14/13/23/ocean-3605547_960_720.jpg);
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    p {
+      color: white;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      text-transform: uppercase;
+      text-shadow: 0 0 9px black;
+    }
+
+    .panel>*:first-child {
+      transform: translateY(-50vh);
+      transition: .3s linear;
+    }
+
+    .panel.active>*:first-child {
+      transform: translateY(0);
+      font-size: 45px;
+    }
+
+    .panel>*:last-child {
+      transform: translateY(50vh);
+      transition: .3s linear;
+    }
+
+    .panel.active>*:last-child {
+      transform: translateY(0);
+      font-size: 45px;
+    }
+
+    .open-active {
+      flex-grow: 5;
+      font-size: 55px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="panels">
+    <div class="panel panel1">
+      <p>always</p>
+      <p>be</p>
+      <p>smile</p>
+    </div>
+    <div class="panel panel2">
+      <p>believe</p>
+      <p>in</p>
+      <p>yourself</p>
+    </div>
+    <div class="panel panel3">
+      <p>just</p>
+      <p>do</p>
+      <p>it</p>
+    </div>
+    <div class="panel panel4">
+      <p>never</p>
+      <p>give</p>
+      <p>up</p>
+    </div>
+  </div>
+
+  <script>
+    const panels = document.querySelectorAll('.panel');
+
+    function changeGrow() {
+      this.classList.toggle('open-active');
+    }
+
+    function change(e) {
+      if (e.propertyName.includes('flex-grow')) {
+        this.classList.toggle('active')
+      }
+    }
+
+
+    panels.forEach(panel => panel.addEventListener('click', changeGrow));
+    panels.forEach(panel => panel.addEventListener('transitionend', change))
+  </script>
+</body>
+
+</html>

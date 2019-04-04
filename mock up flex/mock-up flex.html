@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      min-height: 150vh;
+      background-color: #111;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      position: absolute;
+      top: 2%;
+      left: 0;
+      right: 0;
+      margin: auto;
+      background-color: rgb(136, 243, 36);
+      width: 95%;
+      height: 9vh;
+      text-align: center;
+      line-height: 9vh;
+      font-size: 30px;
+    }
+
+    .first {
+      display: flex;
+      width: 95%;
+      height: 20vh;
+      justify-content: space-between;
+      margin: 14vh auto 1vh auto;
+    }
+
+    div.top1 {
+      background-color: red;
+      width: 24%;
+    }
+
+    div.top2 {
+      background-color: orange;
+      width: 44%;
+    }
+
+    div.top3 {
+      background-color: sandybrown;
+      width: 24%;
+    }
+
+    .wrap {
+      display: flex;
+      width: 95%;
+      height: 100vh;
+      margin: 2vh auto 2vh auto;
+      justify-content: space-around;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      height: 77vh;
+      width: 75%;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+    }
+
+    .middle1 {
+      background-color: rgb(44, 44, 240);
+      flex-basis: 49%;
+      width: 36%;
+    }
+
+    .middle2 {
+      background-color: blue;
+      flex-basis: 49%;
+      width: 36%;
+    }
+
+    .middle3,
+    .middle4,
+    .middle5 {
+      width: 60%;
+      flex-basis: 32%;
+    }
+
+    .middle3 {
+      background-color: #888;
+    }
+
+    .middle4 {
+      background-color: #555;
+    }
+
+    .middle5 {
+      background-color: #222;
+    }
+
+    aside {
+      background-color: brown;
+      flex-basis: 25%;
+      justify-content: space-between;
+      height: 77vh;
+    }
+
+    .second {
+      position: absolute;
+      display: flex;
+      bottom: 8%;
+      width: 95%;
+      justify-content: space-around;
+    }
+
+    .second div {
+      width: 19%;
+      background-color: rgb(21, 192, 214);
+      height: 20vh;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 2%;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      width: 95%;
+      height: 4%;
+      background-color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <header>all</header>
+  <section class="first">
+    <div class="top1"></div>
+    <div class="top2"></div>
+    <div class="top3"></div>
+  </section>
+  <div class="wrap">
+    <main>
+      <div class="middle1"></div>
+      <div class="middle2"></div>
+      <div class="middle3"></div>
+      <div class="middle4"></div>
+      <div class="middle5"></div>
+    </main>
+    <aside></aside>
+    <section class="second">
+      <div class="bottom1"></div>
+      <div class="bottom2"></div>
+      <div class="bottom3"></div>
+      <div class="bottom4"></div>
+      <div class="bottom5"></div>
+    </section>
+  </div>
+  <footer></footer>
+
+</body>
+
+</html>

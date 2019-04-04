@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>InJustice</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Permanent+Marker"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Simonetta"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Fira+Sans"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: "Simonetta", cursive;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-image: linear-gradient(
+          black 8%,
+          yellow 35%,
+          blue 45%,
+          blue 64%,
+          red 83%,
+          black
+        );
+      }
+
+      .main {
+        text-align: center;
+        margin: 40px auto;
+        width: 80%;
+        min-height: 150vh;
+        overflow: hidden;
+        max-width: 1200px;
+      }
+
+      .header {
+        width: 100%;
+        background-image: url(tło2.jpg);
+        background-attachment: fixed;
+        background-position: center top;
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding: 30px;
+        text-align: center;
+        height: 130vh;
+      }
+
+      h1 {
+        width: 100%;
+        height: 80px;
+        padding: 10px 0 60px 0;
+        font-size: 90px;
+        font-family: "Fira Sans", sans-serif;
+        text-align: center;
+        margin: 100px auto 50px;
+        letter-spacing: 3px;
+        animation: neon 4s linear infinite;
+      }
+
+      @keyframes neon {
+        0% {
+          text-shadow: 0px 0px 5px rgb(6, 6, 156), 0 0 3px rgb(2, 0, 34);
+        }
+
+        50% {
+          text-shadow: 0px 0px 40px rgb(2, 2, 68), 0 0 20px white;
+        }
+
+        100% {
+          text-shadow: 0px 0px 5px rgb(6, 6, 156), 0 0 3px rgb(2, 0, 34);
+        }
+      }
+
+      h2 {
+        font-family: "Fira Sans", sans-serif;
+        width: 90%;
+        height: 40px;
+        line-height: 40px;
+        margin: 40px auto;
+      }
+
+      h2.bat {
+        background-image: radial-gradient(yellow, black 60%);
+      }
+
+      a h2.bat {
+        color: black;
+      }
+
+      h2.bat:hover {
+        background-image: radial-gradient(black, black 50%, yellow 80%);
+      }
+
+      a h2.bat:hover {
+        color: yellow;
+      }
+
+      h2.sup {
+        background-image: radial-gradient(rgb(9, 88, 230), black 60%);
+      }
+
+      a h2.sup {
+        color: black;
+      }
+
+      h2.sup:hover {
+        background-image: radial-gradient(
+          black,
+          black 50%,
+          rgb(9, 88, 230) 80%,
+          red 90%
+        );
+      }
+
+      a h2.sup:hover {
+        color: rgb(9, 88, 230);
+      }
+
+      h2.fla {
+        background-image: radial-gradient(red, black 70%);
+      }
+
+      a h2.fla {
+        color: black;
+      }
+
+      h2.fla:hover {
+        background-image: radial-gradient(black, black 50%, red 80%, black 98%);
+      }
+
+      a h2.fla:hover {
+        color: red;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      p {
+        display: inline-block;
+        margin: 20px auto 80px;
+        width: 80%;
+        font-size: 20px;
+      }
+
+      p.white {
+        color: #000;
+        text-shadow: 0 0 1px black, 0 0 2px white;
+        font-size: 24px;
+      }
+
+      .pop2 p {
+        color: black;
+        font-size: 40px;
+        text-align: center;
+        line-height: 40vh;
+        margin: 0 auto;
+        width: 100%;
+        text-transform: uppercase;
+        text-shadow: 0 5px 4px red;
+        font-family: "Permanent Marker", cursive;
+      }
+
+      button {
+        display: block;
+        font-size: 24px;
+        font-family: "Fira Sans", sans-serif;
+        width: 130px;
+        height: 40px;
+        background-color: black;
+        margin: 20px auto 30px auto;
+        text-align: center;
+        cursor: pointer;
+        transition: 0.4s;
+        text-transform: uppercase;
+        box-shadow: 0 0 9px 6px #111;
+        color: white;
+        transition: 0.2s;
+        border: none;
+      }
+
+      button:hover {
+        background-color: #000;
+        box-shadow: 0 0 14px 12px #020202;
+        transition: 0.2s;
+      }
+
+      .blur {
+        filter: blur(3px);
+      }
+
+      img {
+        width: 100%;
+        max-width: 900px;
+        margin: 20px auto;
+      }
+
+      img.bt,
+      img.fl {
+        transform: translateX(-150%);
+        transition: 0.7s linear;
+      }
+
+      img.sp {
+        transform: translateX(150%);
+        transition: 0.9s linear;
+      }
+
+      img.bt.act,
+      img.sp.act,
+      img.fl.act {
+        transform: translateX(0);
+      }
+
+      article.pop.active {
+        display: block;
+      }
+
+      article.pop {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+      }
+
+      .pop-wrap {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        height: 60%;
+        border: 2px solid #777;
+        box-shadow: 0 0 12px 2px white;
+      }
+
+      .pop1 {
+        height: 10vh;
+        background-color: #777;
+      }
+
+      .pop2 {
+        flex-grow: 1;
+        background-image: radial-gradient(white 5%, red 40%, black 70%);
+      }
+
+      .pop3 {
+        height: 10vh;
+        background-color: #777;
+      }
+
+      span {
+        position: absolute;
+        height: 30px;
+        width: 30px;
+        font-size: 30px;
+        font-family: "Permanent Marker", cursive;
+        border-radius: 50%;
+        background-color: #fff;
+        text-align: center;
+        line-height: 22px;
+        top: -15px;
+        right: -15px;
+        border: 2px solid #777;
+        box-shadow: 0 0 12px 2px white;
+        cursor: pointer;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 50px;
+        width: 100%;
+      }
+
+      ul {
+        text-align: center;
+        line-height: 50px;
+      }
+
+      li {
+        font-size: 25px;
+        font-family: "Fira Sans", sans-serif;
+        display: block;
+        float: left;
+        width: 20%;
+        text-transform: uppercase;
+        background-image: radial-gradient(silver, #000 87%);
+        cursor: pointer;
+      }
+
+      li:hover {
+        background-image: radial-gradient(white, #000 60%);
+      }
+
+      li a {
+        text-decoration: none;
+        color: black;
+      }
+
+      @media (max-width: 1200px) {
+        h1 {
+          font-size: 70px;
+          padding: 40px auto 10px auto;
+          letter-spacing: 2px;
+        }
+
+        p {
+          font-size: 18px;
+          margin: 20px auto 60px;
+        }
+
+        p.white {
+          font-size: 20px;
+        }
+      }
+
+      @media (max-width: 800px) {
+        h1 {
+          font-size: 60px;
+          padding: 40px auto 10px auto;
+          letter-spacing: 2px;
+        }
+
+        p {
+          font-size: 18px;
+          margin: 20px auto 60px;
+        }
+
+        p.white {
+          font-size: 16px;
+        }
+      }
+
+      @media (max-width: 665px) {
+        .pop-wrap {
+          width: 90%;
+          height: 90%;
+        }
+
+        h1 {
+          font-size: 40px;
+          padding: 30px auto 10px auto;
+        }
+
+        p.white {
+          font-size: 16px;
+        }
+
+        .pop2 p {
+          line-height: 65vh;
+        }
+      }
+
+      @media (max-width: 630px) {
+        h1 {
+          font-size: 40px;
+          margin: 60px auto 20px;
+        }
+
+        p {
+          font-size: 16px;
+          margin: 20px 10px 40px 20px;
+        }
+
+        li {
+          font-size: 18px;
+          text-transform: uppercase;
+          background-image: radial-gradient(silver, #000 87%);
+        }
+
+        .main {
+          width: 100%;
+          margin: 10px 0 100px 0;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .pop-wrap {
+          width: 90%;
+          height: 90%;
+        }
+
+        .pop2 p {
+          line-height: 35vh;
+        }
+
+        .main {
+          margin: 10px 0 100px 0;
+        }
+      }
+
+      @media (max-width: 430px) {
+        h1 {
+          font-size: 40px;
+          margin: 60px auto 10px;
+        }
+
+        .main {
+          width: 100%;
+          margin: 10px 0 100px 0;
+        }
+
+        .header {
+          margin: 0;
+          padding: 0;
+        }
+
+        li {
+          font-size: 14px;
+        }
+
+        p.white {
+          font-size: 16px;
+        }
+
+        .pop2 p {
+          line-height: 30vh;
+        }
+
+        .pop2 {
+          padding: 40px 20px;
+        }
+      }
+
+      @media (max-width: 360px) {
+        h1 {
+          font-size: 26px;
+          padding: 150px 0 30px 0;
+        }
+
+        nav {
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+
+        li {
+          font-size: 14px;
+          height: 35px;
+          width: 100%;
+          line-height: 35px;
+        }
+
+        p {
+          font-size: 13px;
+        }
+
+        p.white {
+          font-size: 16px;
+        }
+
+        .pop2 p {
+          line-height: 31vh;
+        }
+
+        .pop2 {
+          padding: 0px 15px;
+        }
+
+        .main {
+          margin: 10px 0 90px 0;
+        }
+      }
+
+      @media (max-width: 333px) {
+        .pop2 p {
+          line-height: 25vh;
+        }
+
+        .pop2 {
+          padding: 0px 17px;
+        }
+
+        .main {
+          margin: 10px 0 90px 0;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="all">
+      <div class="header">
+        <h1>Gods among us</h1>
+        <p class="white">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet sunt
+          dolorem excepturi cupiditate impedit voluptas optio incidunt illum
+          eveniet. Commodi?Lorem ipsum dolor sit amet consectetur adipisicing
+          elit. Voluptatem, magnam aliquam odit dolorem itaque eaque
+          exercitationem minus rerum minima unde dicta fuga et, nemo quod
+          reiciendis sed facilis eum necessitatibus.lorem*30 Lorem ipsum dolor
+          sit amet consectetur adipisicing elit. Autem minima iusto debitis
+          sequi praesentium corporis, cumque aperiam rem, ducimus ipsum magni
+          reiciendis magnam corrupti, exercitationem blanditiis voluptates
+          consectetur maxime reprehenderit.
+        </p>
+        <button>kliknij!</button>
+      </div>
+      <section class="main">
+        <a href=""><h2 class="bat">Batman</h2></a>
+        <img src="batman.jpg" alt="batman znak" class="bt" />
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam saepe
+          temporibus excepturi iste nihil alias debitis minus commodi quo, iure
+          pariatur rem illo, quisquam culpa! Nemo, rem quidem, impedit aliquam
+          necessitatibus quis quia natus soluta, eum ad quod iusto asperiores.
+          Suscipit sint, modi facere possimus necessitatibus saepe nostrum a
+          alias?lorem*30 Lorem ipsum dolor sit, amet consectetur adipisicing
+          elit. Iure, doloremque odit! Consequatur id eaque sit eveniet
+          obcaecati doloremque quaerat consequuntur voluptates impedit iusto!
+          Illo modi inventore quae iure beatae. Aspernatur?
+        </p>
+        <a href=""><h2 class="sup">Superman</h2></a>
+        <img src="superman.jpg" alt="superman" class="sp" />
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum dolor,
+          praesentium suscipit fugiat doloremque ex iure doloribus excepturi
+          odio accusantium impedit. Voluptatem optio maxime explicabo voluptas,
+          deleniti temporibus quisquam tempora, sed deserunt quia sint iure nam
+          consectetur culpa, dolorem minus iste officia nihil quo quam sapiente
+          cumque. Voluptatum, quis libero?lorem*30 Lorem ipsum dolor sit amet
+          consectetur adipisicing elit. Delectus vel deserunt, maxime rerum eum
+          eius ad dolores minus cumque perspiciatis, quas ex officia nulla,
+          dolor quae nam dolore! Aperiam, voluptatum?
+        </p>
+        <a href=""><h2 class="fla">Flash</h2></a>
+        <img src="flash.jpg" alt="flash" class="fl" />
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum dolor,
+          praesentium suscipit fugiat doloremque ex iure doloribus excepturi
+          odio accusantium impedit. Voluptatem optio maxime explicabo voluptas,
+          deleniti temporibus quisquam tempora, sed deserunt quia sint iure nam
+          consectetur culpa, dolorem minus iste officia nihil quo quam sapiente
+          cumque. Voluptatum, quis libero?lorem*30 Lorem ipsum dolor sit amet
+          consectetur adipisicing elit. Perferendis eligendi unde quidem
+          quaerat. Corrupti necessitatibus tenetur in incidunt natus eos
+          pariatur assumenda sed. Qui recusandae expedita veniam aperiam,
+          voluptas amet?
+        </p>
+      </section>
+    </section>
+    <nav>
+      <ul>
+        <li><a href="">hero 1</a></li>
+        <li><a href="">hero 2</a></li>
+        <li><a href="">hero 3</a></li>
+        <li><a href="">hero 4</a></li>
+        <li><a href="">hero 5</a></li>
+      </ul>
+    </nav>
+    <article class="pop">
+      <div class="pop-wrap">
+        <div class="pop1"></div>
+        <div class="pop2">
+          <p>the choice is yours</p>
+        </div>
+        <div class="pop3"></div>
+        <span>x</span>
+      </div>
+    </article>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      JQuery: $("button, span").on("click", function() {
+        $(".main").toggleClass("blur");
+        $("article.pop").toggleClass("active");
+      });
+
+      //skrolowanie:
+      $(document).on("scroll", function() {
+        const windowHeight = $(window).height();
+        const scrollValue = $(this).scrollTop();
+        //Sekcja bt:
+        const $bt = $(".bt");
+        const btFromTop = $bt.offset().top;
+        const btHeight = $bt.outerHeight();
+
+        const $sp = $(".sp");
+        const spFromTop = $sp.offset().top;
+        const spHeight = $sp.outerHeight();
+
+        const $fl = $(".fl");
+        const flFromTop = $fl.offset().top;
+        const flHeight = $fl.outerHeight();
+
+        if (scrollValue > btFromTop + btHeight / 3 - windowHeight) {
+          $bt.addClass("act");
+        }
+        if (scrollValue > spFromTop + spHeight / 3 - windowHeight) {
+          $sp.addClass("act");
+        }
+        if (scrollValue > flFromTop + flHeight / 3 - windowHeight) {
+          $fl.addClass("act");
+        }
+
+        if (scrollValue < 100) {
+          $(".bt, .sp, .fl").removeClass("act");
+        }
+      });
+    </script>
+  </body>
+</html>

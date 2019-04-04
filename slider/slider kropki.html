@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Slider kropki</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    header {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100%;
+    }
+
+    h1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: 50px;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-shadow: 0 0 10px black;
+    }
+
+    .dots {
+      position: absolute;
+      bottom: 2%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .dots span {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: #000;
+      border: 5px solid white;
+      margin: 20px;
+    }
+
+    .active {
+      box-shadow: 0 0 0 5px red;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <img src="img1.jpg" alt="" class="slider" />
+    <h1>Pierwszy tekst</h1>
+    <div class="dots">
+      <span id="dot1" class="active"></span>
+      <span id="dot2"></span>
+      <span id="dot3"></span>
+    </div>
+  </header>
+
+  <script>
+    const slideList = [{
+        img: "img1.jpg",
+        text: "Pierwszy tekst"
+      },
+      {
+        img: "img2.jpg",
+        text: "Drugi tekst"
+      },
+      {
+        img: "img3.jpg",
+        text: "Trzeci tekst "
+      }
+    ];
+
+    let time = 2000;
+    let index = 0;
+    const dots = [...document.querySelectorAll("span")];
+    const img = document.querySelector("img");
+    const text = document.querySelector("h1");
+
+    const changeDots = () => {
+      const findIndex = dots.findIndex(dot =>
+        dot.classList.contains("active")
+      );
+      dots[findIndex].classList.remove("active");
+      dots[index].classList.add("active");
+    };
+
+    const changeSlide = () => {
+      index++;
+      if (index === slideList.length) {
+        index = 0;
+      }
+      text.textContent = slideList[index].text;
+      img.src = slideList[index].img;
+      changeDots();
+    };
+    let interval = setInterval(changeSlide, time);
+
+    const changeArrow = e => {
+      if (e.keyCode === 37 || e.keyCode === 39) {
+        clearInterval(interval);
+        e.keyCode === 37 ? index-- : index++;
+        if (index === slideList.length) {
+          index = 0;
+        } else if (index < 0) {
+          index = slideList.length - 1;
+        }
+        text.textContent = slideList[index].text;
+        img.src = slideList[index].img;
+        changeDots();
+      }
+      interval = setInterval(changeSlide, time);
+    };
+    window.addEventListener("keydown", changeArrow);
+  </script>
+</body>
+
+</html>

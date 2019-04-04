@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Type writing</title>
+  <style>
+    div {
+      width: 80%;
+      margin: 100px auto;
+      font-size: 32px;
+      font-family: arial, sans-serif;
+      letter-spacing: 2px;
+    }
+
+    .active {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div><span class="text"></span> <span class="cursor"> |</span></div>
+
+  <script>
+    const cursor = document.querySelector(".cursor");
+    const text = document.querySelector(".text");
+    const line = [
+      "Litwo ojczyzno moja, ",
+      "ty jesteś jak zdrowie, ",
+      "ile Cię trzeba cenić ten tylko się dowie..."
+    ];
+    let index = 0;
+    let number = 0;
+
+    const addLetter = () => {
+      text.textContent += line[index][number];
+      number++;
+      if (number === line[index].length) {
+        index++;
+        if (index === line.length) return;
+        return setTimeout(() => {
+          number = 0;
+          text.textContent = "";
+          addLetter();
+        }, 600);
+      }
+      setTimeout(addLetter, 200);
+    };
+    addLetter();
+
+    const addCursor = () => {
+      setInterval(() => {
+        cursor.classList.toggle("active");
+      }, 200);
+    };
+    addCursor();
+  </script>
+</body>
+
+</html>

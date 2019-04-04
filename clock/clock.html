@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(30deg, black 25%, red 50%, red 56%, red 58%, black 78%);
+      background-repeat: no-repeat;
+    }
+
+    .clock {
+      position: relative;
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .face {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      /* box-shadow: 0 0 0 30px white; */
+      border-radius: 50%;
+    }
+
+    .hand {
+      background-color: #000;
+      transform-origin: 100%;
+      transition: all 0.01s;
+      transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+      border-radius: 20px
+    }
+
+    .second {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      width: 140px;
+      height: 3px;
+    }
+
+    .minute {
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      width: 130px;
+      height: 5px;
+    }
+
+    .hour {
+      position: absolute;
+      top: 50%;
+      left: 50px;
+      width: 100px;
+      height: 7px;
+    }
+
+    h3 {
+      position: absolute;
+      font-size: 34px;
+      /* box-shadow: 0 0 0 1px black; */
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+    }
+
+    h3.num1 {
+      top: -1.5%;
+      left: 73%;
+    }
+
+    h3.num2 {
+      top: 18%;
+      left: 91%;
+    }
+
+    h3.num3 {
+      top: calc(50% - 14px);
+      left: 98%;
+    }
+
+    h3.num4 {
+      top: 72%;
+      left: 90.5%;
+    }
+
+    h3.num5 {
+      top: 91%;
+      left: 72%;
+    }
+
+    h3.num6 {
+      top: calc(100% - 5px);
+      left: calc(50% - 20px);
+    }
+
+    h3.num7 {
+      top: 90%;
+      left: 15%;
+    }
+
+    h3.num8 {
+      top: 70%;
+      left: -4%;
+    }
+
+    h3.num9 {
+      top: calc(50% - 20px);
+      left: -10.5%;
+    }
+
+    h3.num10 {
+      top: 18%;
+      left: -3.5%;
+    }
+
+    h3.num11 {
+      top: -1.5%;
+      left: 14%;
+    }
+
+    h3.num12 {
+      top: -10%;
+      left: calc(50% - 20px);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="clock">
+
+    <div class="face">
+      <h3 class="num1">1</h3>
+      <h3 class="num2">2</h3>
+      <h3 class="num3">3</h3>
+      <h3 class="num4">4</h3>
+      <h3 class="num5">5</h3>
+      <h3 class="num6">6</h3>
+      <h3 class="num7">7</h3>
+      <h3 class="num8">8</h3>
+      <h3 class="num9">9</h3>
+      <h3 class="num10">10</h3>
+      <h3 class="num11">11</h3>
+      <h3 class="num12">12</h3>
+      <div class="hand hour"></div>
+      <div class="hand minute"></div>
+      <div class="hand second"></div>
+    </div>
+  </div>
+  <script>
+    const second = document.querySelector('.second');
+    const minute = document.querySelector('.minute');
+    const hour = document.querySelector('.hour');
+
+    function clock() {
+      const date = new Date();
+
+      const secondTime = date.getSeconds();
+      const secondDegree = ((secondTime / 60) * 360) + 90;
+      second.style.transform = `rotate(${secondDegree}deg)`;
+
+      const minuteTime = date.getMinutes();
+      const minuteDegree = ((minuteTime / 60) * 360) + 90;
+      minute.style.transform = `rotate(${minuteDegree}deg)`;
+
+      const hourTime = date.getHours();
+      const hourDegree = ((hourTime / 12) * 360) + 90;
+      hour.style.transform = `rotate(${hourDegree}deg)`;
+
+      if (hourTime >= 6 && hourTime <= 19) {
+        document.body.style.background =
+          "linear-gradient(30deg, blue 25%, white 50%, white 56%, white 58%, blue 78%)";
+      } else {
+        document.body.style.background =
+          "linear-gradient(30deg, black 25%, red 50%, red 56%, red 58%, black 78%)";
+      }
+    }
+    setInterval(clock, 1000)
+  </script>
+</body>
+
+</html>

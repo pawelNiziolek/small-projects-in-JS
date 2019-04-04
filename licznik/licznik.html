@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    div {
+      text-align: center;
+      margin: 100px auto;
+      font-size: 40px;
+    }
+
+    h1 {
+      font-size: 42px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="time">Godzina: <span class="first"></span>
+  </div>
+  <div class="counter">Do odlotu na Saturna pozostało:
+    <h1>
+      <span class="d">.</span> d:
+      <span class="h">.</span> h:
+      <span class="m">.</span> m:
+      <span class="s">.</span> s
+    </h1>
+  </div>
+
+  <script>
+    // licznik:
+    // const counter = () => {
+    //   let number = 0;
+    //   document.body.textContent = `${number} sekund`;
+    //   const time = () => {
+    //     number++;
+    //     document.body.textContent = `${number} sekund`;
+    //   }
+    //   return time
+    // }
+    // const start = counter();
+    // setInterval(start, 1000)
+
+    // const span = document.querySelector('.first');
+
+    setInterval(() => {
+      const date = new Date();
+      const hour = date.getHours() < 10 ? `0${date.getHours()}` : `${date.getHours()}`;
+      const minute = date.getMinutes() < 10 ? `0${date.getMinutes()}` : `${date.getMinutes()}`;
+      const second = date.getSeconds() < 10 ? `0${date.getSeconds()}` : `${date.getSeconds()}`;
+      span.textContent = `${hour}:${minute}:${second}`;
+    }, 1000)
+
+    const ivent = new Date("2020-02-20 20:00:00").getTime();
+
+    const h = document.querySelector('.h');
+    const d = document.querySelector('.d');
+    const m = document.querySelector('.m');
+    const s = document.querySelector('.s');
+
+    setInterval(() => {
+      const dates = new Date().getTime();
+      const counter = ivent - dates;
+      const days = Math.floor((ivent / (1000 * 60 * 60 * 24)) - (dates / (1000 * 60 * 60 * 24)));
+      const hours = Math.floor(((ivent / (1000 * 60 * 60)) - (dates / (1000 * 60 * 60))) % 24);
+      hours < 10 ? `0${hours}` : `${hours}`;
+      const minutes = Math.floor(((ivent / (1000 * 60)) - (dates / (1000 * 60))) % 60);
+      minutes < 10 ? `0${minutes}` : `${minutes}`
+      const seconds = Math.floor(((ivent / 1000) - (dates / 1000)) % 60);
+      seconds < 10 ? `0${seconds}` : `${seconds}`;
+      d.textContent = days;
+      h.textContent = hours;
+      m.textContent = minutes;
+      s.textContent = seconds;
+    }, 1000)
+  </script>
+</body>
+
+</html>

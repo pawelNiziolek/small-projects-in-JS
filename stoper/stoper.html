@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Stoper</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: monospace;
+      text-align: center;
+    }
+
+    body {
+      height: 100vh;
+      background-image: linear-gradient(green, yellow, black);
+      background-repeat: no-repeat;
+    }
+
+    button {
+      font-size: 30px;
+      padding: 5px 10px;
+      margin: 100px auto;
+      text-align: center;
+    }
+
+    div {
+      font-size: 30px;
+    }
+
+    span {
+      font-size: 40px;
+      display: block;
+      margin: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <button class="start">START</button>
+  <button class="reset">RESET</button>
+  <div>
+    Czas do startu
+    <span>---</span>
+  </div>
+  <script>
+    let number = 0;
+    let interval = "";
+    let flag = false;
+    const start = document.querySelector(".start");
+    const reset = document.querySelector(".reset");
+    const display = document.querySelector("span");
+
+    const startT = () => {
+      if (!flag) {
+        flag = !flag;
+        start.textContent = "PAUSE";
+        interval = setInterval(startTime, 10);
+      } else {
+        flag = !flag;
+        start.textContent = "START";
+        clearInterval(interval);
+      }
+    };
+
+    const resetTime = () => {
+      number = 0;
+      flag = false;
+      clearInterval(interval);
+      start.textContent = "START";
+      display.textContent = "---";
+    };
+
+    startTime = () => {
+      number++;
+      display.textContent = (number / 100).toFixed(2);
+    };
+
+    start.addEventListener("click", startT);
+    reset.addEventListener("click", resetTime);
+
+    for (var i = 0; i < 5; i++) {
+      setTimeout(() => console.log(i), 500);
+    }
+  </script>
+</body>
+
+</html>
